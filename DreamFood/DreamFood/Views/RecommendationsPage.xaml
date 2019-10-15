@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DreamFood.Views.RecommendationsPage"
+             xmlns:i18n="clr-namespace:DreamFood.Helpers"
+                          xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
+
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="{i18n:Translate Recommendations}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="ic_add" Command="{Binding AddRecommendationCommand}"/>
+        
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout
+             BindingContext="{Binding Recommendations}"
+            Padding="5">
+                <SearchBar
+                    HeightRequest="40"
+                    Placeholder="{i18n:Translate Search}"       
+                    SearchCommand="{Binding SearchCommand}"
+                    Text="{Binding Filter}">
+                </SearchBar>
+                <ListView
+                    HasUnevenRows="True"
+                    IsRefreshing="{Binding IsRefreshing}"
+                    IsPullToRefreshEnabled="True"
+                    RefreshCommand="{Binding RefreshCommand}"
+                    ItemsSource="{Binding Recommendations}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame
+                                    CornerRadius="20"
+                                    HasShadow="true"
+                                    BorderColor="Silver"
+                                    Margin="5">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Image
+                                        Grid.Column="0"
+                                        VerticalOptions="Center"
+                                        Source="{Binding ImageFullPathRecomm}"
+                                        WidthRequest="150"
+                                        HeightRequest="150">
+                                        </Image>
+                                        <StackLayout
+                                        Grid.Column="1"
+                                        VerticalOptions="Center">
+                                            <Label
+                                        FontAttributes="Bold"
+                                        Text="{Binding Restaurant.Name}">
+                                            </Label>
+                                            <rating:SfRating  ItemCount="{Binding Score}" ItemSize="25">
+                                                <rating:SfRating.RatingSettings>
+                                                    <rating:SfRatingSettings RatedFill="#008C8C" UnRatedFill="#008C8C" RatedStrokeWidth="0" UnRatedStrokeWidth="0" />
+                                                </rating:SfRating.RatingSettings>
+                                            </rating:SfRating>
+                                            <Label
+                                        FontAttributes="Bold"
+                                        Text="{Binding RecommendationUser}">
+                                            </Label>
+                                            <Label
+                                        
+                                        FontAttributes="Bold"
+                                        Text="{Binding DateRecomm}">
+                                            </Label>
+                                        </StackLayout>
+                                    </Grid>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

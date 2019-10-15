@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DreamFood.Views.AddRestaurantPage"
+             xmlns:i18n="clr-namespace:DreamFood.Helpers"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="{i18n:Translate AddRestaurant}">
+    <ContentPage.Content>
+        <ScrollView
+            BindingContext="{Binding AddRestaurant}"
+            Padding="5">
+            <StackLayout>
+                <Image
+                    Source="{Binding ImageSource}"
+                    HeightRequest="200"
+                    WidthRequest="200">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangeImageCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label
+                    FontSize="Small"
+                    HorizontalOptions="Center"
+                    Text="{i18n:Translate ChangeImage}">
+                </Label>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <Label
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate RestaurantName}"
+                            VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                            Grid.Column="1"
+                            Grid.Row="0"
+                            Placeholder="{i18n:Translate PlaceholderRestaurantName}"
+                            Text="{Binding Name}"
+                            VerticalOptions="FillAndExpand">
+                    </Entry>
+                    <Label
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate RestaurantType}"
+                            VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            Placeholder="{i18n:Translate PlaceholderRestaurantType}"
+                            Text="{Binding Type}"
+                            VerticalOptions="FillAndExpand">
+                    </Entry>
+                    <Label
+                            Grid.Column="0"
+                            Grid.Row="2"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate RestaurantAddress}"
+                            VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                            Grid.Column="1"
+                            Grid.Row="2"                            
+                            Placeholder="{i18n:Translate PlaceholderRestaurantAddress}"
+                            Text="{Binding Address}"
+                            VerticalOptions="FillAndExpand">
+                    </Entry>
+                    <Label
+                            Grid.Column="0"
+                            Grid.Row="3"                            
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate RestaurantPhone}"
+                            
+                            VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                            Grid.Column="1"
+                            Grid.Row="3"                            
+                            Keyboard="Numeric"
+                            Placeholder="{i18n:Translate PlaceholderRestaurantPhone}"
+                            Text="{Binding Phone}"
+                            VerticalOptions="FillAndExpand">
+                    </Entry>
+                    <Label
+                                Grid.Column="0"
+                                Grid.Row="4"                            
+                                FontAttributes="Bold"
+                                Text="{i18n:Translate RestaurantRemarks}"
+                                VerticalOptions="Center">
+                    </Label>
+                    <Editor
+                                Grid.Column="1"
+                                Grid.Row="5"
+                                Text="{Binding Remarks}"
+                                VerticalOptions="FillAndExpand">
+                    </Editor>
+                </Grid>
+                <ActivityIndicator
+                    IsRunning="{Binding IsRunning}"
+                    VerticalOptions="CenterAndExpand">
+                </ActivityIndicator>
+                <Button
+                    BackgroundColor="DeepSkyBlue"
+                    BorderRadius="23"
+                    Command="{Binding SaveCommand}"
+                    HeightRequest="46"
+                    IsEnabled="{Binding IsEnabled}"
+                    Text="{i18n:Translate Save}"
+                    TextColor="White">
+                </Button>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

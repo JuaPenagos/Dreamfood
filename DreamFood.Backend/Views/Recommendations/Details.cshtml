@@ -1,0 +1,67 @@
+﻿@model DreamFood.Common.Models.Recommendation
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Recommendation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Restaurant.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Restaurant.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RecommendationUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RecommendationUser)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateRecomm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateRecomm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImagePathRecomm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImagePathRecomm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Score)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Score)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdRecommendation }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

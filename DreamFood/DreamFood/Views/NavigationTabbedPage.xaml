@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DreamFood.Views.NavigationTabbedPage"
+             xmlns:tabs="clr-namespace:DreamFood.Views"
+             Title="DreamFood">
+
+    <TabbedPage.Children>
+        <tabs:RecommendationsPage Icon="recommendation"/>
+        <tabs:RestaurantsPage Icon="Restaurant"/>
+        <tabs:MapPage Icon="GotoMap"/>
+        <tabs:MenuPage Icon="ic_menu"/>
+    </TabbedPage.Children>
+    
+</TabbedPage>

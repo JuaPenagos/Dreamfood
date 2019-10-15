@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DreamFood.Views.AddRecommendationPage"
+             xmlns:i18n="clr-namespace:DreamFood.Helpers"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="{i18n:Translate AddRecommendations}">
+    <ContentPage.Content>
+        <ScrollView
+            BindingContext="{Binding AddRecommendation}"
+            Padding="5">
+            <StackLayout>
+                <Image
+                    Source="{Binding ImageSource}"
+                    WidthRequest="300"
+                    HeightRequest="300">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangeImageCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label
+                    FontSize="Small"
+                    HorizontalOptions="Center"
+                    Text="{i18n:Translate ChangeImage}">
+                </Label>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Label
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate Recommendation}"
+                            VerticalOptions="Center">
+                    </Label>
+                    <Editor
+                            Grid.Column="1"
+                            Grid.Row="0"
+                            Placeholder="{i18n:Translate RecomendationPlaceHolder}"
+                            Text="{Binding RecommendationUser}"
+                            VerticalOptions="FillAndExpand">
+                    </Editor>
+                    <Label
+                            Grid.Column="0"
+                            Grid.Row="1"                            
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate Score}"
+                            VerticalOptions="Center">
+                    </Label>
+                    <Picker 
+                        Grid.Column="1"
+                        Grid.Row="1"   
+                        Title="{i18n:Translate ValorationPlaceHolder}"
+                        SelectedItem="{Binding Score}"
+                        VerticalOptions="Center">
+                        <Picker.Items>
+                            <x:String>1</x:String>
+                            <x:String>2</x:String>
+                            <x:String>3</x:String>
+                            <x:String>4</x:String>
+                            <x:String>5</x:String>
+                        </Picker.Items>
+                    </Picker>
+                    <Label
+                            Grid.Column="0"
+                            Grid.Row="2"
+                            FontAttributes="Bold"
+                            Text="{i18n:Translate Restaurant}"
+                            VerticalOptions="Center">
+                    </Label>
+                    <Picker
+                        Grid.Column="1"
+                        Grid.Row="2"   
+                        Title="{i18n:Translate SelectRestaurantPlaceHolder}"
+                        VerticalOptions="Center" 
+                        ItemsSource="{Binding Restaurants}"
+                        ItemDisplayBinding="{Binding Name}"
+                        SelectedItem="{Binding Restaurant}"></Picker>
+                </Grid>
+                <ActivityIndicator
+                    IsRunning="{Binding IsRunning}"
+                    VerticalOptions="CenterAndExpand">
+                </ActivityIndicator>
+                <Button
+                    BackgroundColor="DeepSkyBlue"
+                    BorderRadius="23"
+                    Command="{Binding SaveCommand}"
+                    HeightRequest="46"
+                    IsEnabled="{Binding IsEnabled}"
+                    Text="Save"
+                    TextColor="White">
+                </Button>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

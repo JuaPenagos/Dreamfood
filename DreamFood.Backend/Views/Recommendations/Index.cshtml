@@ -1,0 +1,66 @@
+﻿@model IEnumerable<DreamFood.Common.Models.Recommendation>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", new { }, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Restaurant.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RecommendationUser)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateRecomm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImagePathRecomm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Score)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Restaurant.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RecommendationUser)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateRecomm)
+        </td>
+        <td>
+            @if (!string.IsNullOrEmpty(item.ImagePathRecomm))
+            {
+                <img src="@Url.Content(item.ImageFullPathRecomm)" alt="Image" style="width:100px;height:150px;max-width: 100%; height: auto;" />
+            }
+
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Score)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.IdRecommendation }, new { @class = "btn btn-warning" }) 
+            @Html.ActionLink("Delete", "Delete", new { id = item.IdRecommendation }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

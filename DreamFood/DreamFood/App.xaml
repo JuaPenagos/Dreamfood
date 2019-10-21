@@ -9,7 +9,7 @@
             <infra:InstanceLocator x:Key="Locator"/>
 
             <!-- Parameters -->
-            <x:String x:Key="UrlAPI">https://apidreamfood.azurewebsites.net/</x:String>
+            <x:String x:Key="UrlAPI">http://dreamfoodapi.azurewebsites.net/</x:String>
             <x:String x:Key="UrlPrefix">/api</x:String>
             <x:String x:Key="UrlRestaurantsController">/Restaurants</x:String>
             <x:String x:Key="UrlRecommendationsController">/Recommendations</x:String>
